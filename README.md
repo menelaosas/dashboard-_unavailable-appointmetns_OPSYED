@@ -1,17 +1,39 @@
-# Medical Appointments Dashboard
+Dashboard Αδιάθετων Ραντεβού – 401 ΓΣΝΑ
 
-This repository contains a **Google Colab/Jupyter Notebook** implementation of a dashboard for analyzing and redistributing unused (idle) medical appointments.  
-The project is developed in **Python** using **Plotly Dash** and **Dash Bootstrap Components**.
+Αυτό το project είναι ένα **διαδραστικό dashboard** που δείχνει και αναλύει τα **αδιάθετα ραντεβού** στο 401 Γενικό Στρατιωτικό Νοσοκομείο Αθηνών.
+Στόχος του είναι να κάνει πιο εύκολη την παρακολούθηση των ραντεβού και να προτείνει μια πιο δίκαιη κατανομή ανάμεσα στα τμήματα και τις ομάδες.
 
-## Features
-- **KPI Cards**: Quick overview of total available appointments, unused appointments, and utilization rates.
-- **Trend Analysis**: Monthly evolution of idle appointments and percentage of unused slots.
-- **Department Ranking**: Top/bottom departments by number of unused appointments.
-- **Detailed Table**: Interactive table with filtering, sorting, and export to Excel.
-- **Fair Redistribution Algorithm**: Suggests how unused appointments can be transferred from groups with surplus (donors) to groups with shortage (receivers), visualized with Sankey diagrams.
+Τι μπορείς να δεις
+* Συνολικά αδιάθετα και διαθέσιμα ραντεβού
+* Ποσοστά και τάσεις μέσα στον χρόνο
+* Ποια τμήματα έχουν τα περισσότερα ή λιγότερα αδιάθετα
+* Έναν αλγόριθμο που προτείνει **ανακατανομή** ραντεβού από τμήματα με «περισσευούμενα» προς αυτά που έχουν ανάγκη
+* Πίνακες με αναλυτικά στοιχεία και χρωματική κωδικοποίηση για να φαίνονται εύκολα τα προβλήματα
+* Συστάσεις και οδηγίες με βάση τα αποτελέσματα
 
-## Repository Structure
-├── dashboard_notebook.ipynb # Main notebook with code
-├── data/ # Folder for input CSV files (not included in repo)
-├── README.md # This file
-└── requirements.txt # Python dependencies
+Τι χρειάζεσαι
+* Python 3
+* Βιβλιοθήκες: `dash`, `plotly`, `pandas`, `dash-bootstrap-components`
+
+(Αν έχεις το `requirements.txt`, τις εγκαθιστάς με `pip install -r requirements.txt`)
+
+Πώς τρέχεις το project
+
+1. Κατεβάζεις ή κάνεις clone το repo
+2. Βάζεις το αρχείο δεδομένων CSV (π.χ. `OPSY_401_clean.csv`) στον ίδιο φάκελο
+3. Τρέχεις:
+
+   ```bash
+   python adiatheta_mono_v8_weighted.py
+   ```
+4. Ανοίγεις το πρόγραμμα περιήγησης στη διεύθυνση:
+ [http://127.0.0.1:8050](http://127.0.0.1:8050)
+
+Δεδομένα που περιμένει
+Το αρχείο CSV πρέπει να έχει στήλες όπως:
+* `ΤΜΗΜΑ`
+* `ΟΝΟΜΑ_ΟΜΑΔΑΣ`
+* `ΑΔΙΑΘΕΤΑ_ΡΑΝΤΕΒΟΥ`
+* `ΔΙΑΘΕΣΙΜΑ_ΡΑΝΤΕΒΟΥ`
+* `ΡΑΝΤΕΒΟΥ_ΠΟΥ_ΚΛΕΙΣΤΗΚΑΝ`
+* `ΜΗΝΑΣ-ΕΤΟΣ`
